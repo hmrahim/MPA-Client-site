@@ -1,0 +1,394 @@
+/* ================================================================
+   Moom24 Enterprise Dark Dashboard Theme Tokens & Styles
+   ================================================================ */
+
+:root {
+  --adm-bg:         #0a0a0f;
+  --adm-surface:    #111118;
+  --adm-surface2:   #16161f;
+  --adm-surface3:   #1c1c28;
+  --adm-border:     #1e1e2e;
+  --adm-border-subtle: rgba(255, 255, 255, 0.06);
+  --adm-accent:     #6c63ff;
+  --adm-accent2:    #a78bfa;
+  --adm-text:       #e2e8f0;
+  --adm-muted:      #94a3b8;
+  --adm-sidebar-w:  250px;
+  --adm-sidebar-sm: 68px;
+  --adm-header-h:   64px;
+  --adm-radius:     12px;
+  --adm-transition: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Reset for admin scope ── */
+.moom-dashboard-root *,
+.moom-sidebar * {
+  box-sizing: border-box;
+}
+
+.moom-dashboard-root {
+  background: var(--adm-bg);
+  color: var(--adm-text);
+  min-height: 100vh;
+}
+
+/* ── Ambient glow ── */
+.moom-ambient-glow {
+  position: absolute;
+  top: -90px;
+  left: -90px;
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, rgba(108, 99, 255, 0.16) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Cards & Surfaces ── */
+.moom-card {
+  background: var(--adm-surface);
+  border: 1px solid var(--adm-border);
+  border-radius: var(--adm-radius);
+  transition: all 0.2s var(--adm-transition);
+}
+
+.moom-card:hover {
+  border-color: rgba(108, 99, 255, 0.25);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5), 0 0 15px -3px rgba(108, 99, 255, 0.1);
+}
+
+.moom-card-subtle {
+  background: var(--adm-surface2);
+  border: 1px solid var(--adm-border);
+  border-radius: var(--adm-radius);
+}
+
+/* ── Inputs ── */
+.moom-input {
+  background: var(--adm-surface2);
+  border: 1px solid var(--adm-border);
+  color: var(--adm-text);
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 13px;
+  transition: all 0.2s;
+  outline: none;
+}
+
+.moom-input:focus {
+  border-color: var(--adm-accent);
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.15);
+}
+
+.moom-input::placeholder {
+  color: #64748b;
+}
+
+/* ── Select ── */
+.moom-select {
+  background: var(--adm-surface2);
+  border: 1px solid var(--adm-border);
+  color: var(--adm-text);
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 13px;
+  transition: all 0.2s;
+  outline: none;
+  cursor: pointer;
+}
+
+.moom-select:focus {
+  border-color: var(--adm-accent);
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.15);
+}
+
+/* ── Tables ── */
+.moom-table-container {
+  background: var(--adm-surface);
+  border: 1px solid var(--adm-border);
+  border-radius: var(--adm-radius);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.moom-table {
+  width: 100%;
+  min-width: 580px;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 13px;
+}
+
+.moom-table thead tr {
+  background: var(--adm-surface2);
+  border-bottom: 1px solid var(--adm-border);
+}
+
+.moom-table th {
+  padding: 12px 16px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #94a3b8;
+}
+
+.moom-table tbody tr {
+  border-bottom: 1px solid var(--adm-border);
+  transition: background-color 0.15s;
+}
+
+.moom-table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.moom-table td {
+  padding: 12px 16px;
+  color: var(--adm-text);
+}
+
+/* ── Creative Cyber-Glow Scrollbars ── */
+.moom-dashboard-root * {
+  scrollbar-width: thin;
+  scrollbar-color: #6c63ff rgba(18, 18, 28, 0.4);
+}
+.moom-dashboard-root *::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.moom-dashboard-root *::-webkit-scrollbar-track {
+  background: rgba(14, 14, 22, 0.5);
+  border-radius: 9999px;
+  margin: 3px;
+}
+.moom-dashboard-root *::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #6c63ff 0%, #8b5cf6 50%, #10b981 100%);
+  border-radius: 9999px;
+  border: 1px solid rgba(14, 14, 22, 0.6);
+  box-shadow: 0 0 8px rgba(108, 99, 255, 0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.moom-dashboard-root *::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #8b5cf6 0%, #a78bfa 50%, #34d399 100%);
+  box-shadow: 0 0 14px rgba(108, 99, 255, 0.75), 0 0 20px rgba(16, 185, 129, 0.4);
+}
+.moom-dashboard-root *::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* ── Creative Horizontal Tab Scrollbar ── */
+.creative-tab-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #6c63ff transparent;
+  scroll-behavior: smooth;
+}
+.creative-tab-scroll::-webkit-scrollbar {
+  height: 3px;
+}
+.creative-tab-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 9999px;
+}
+.creative-tab-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #6c63ff 0%, #a78bfa 50%, #10b981 100%);
+  border-radius: 9999px;
+  box-shadow: 0 0 8px rgba(108, 99, 255, 0.6);
+}
+.creative-tab-scroll::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, #8b5cf6 0%, #c084fc 50%, #34d399 100%);
+}
+
+/* ── Creative Textarea Scrollbar ── */
+.creative-textarea-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #6c63ff transparent;
+}
+.creative-textarea-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.creative-textarea-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.creative-textarea-scroll::-webkit-scrollbar-thumb {
+  background: rgba(108, 99, 255, 0.35);
+  border-radius: 9999px;
+}
+.creative-textarea-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(108, 99, 255, 0.7);
+}
+
+/* ── Sidebar shell ── */
+.moom-sidebar {
+  background:
+    linear-gradient(180deg, rgba(108, 99, 255, 0.06) 0%, transparent 28%),
+    #0f0f16;
+}
+
+/* Scrollable menu: slim scrollbar + soft fade at the top/bottom edges */
+.moom-nav-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(108, 99, 255, 0.35) transparent;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 14px, #000 calc(100% - 18px), transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 14px, #000 calc(100% - 18px), transparent 100%);
+  scroll-behavior: smooth;
+}
+.moom-nav-scroll::-webkit-scrollbar { width: 4px; }
+.moom-nav-scroll::-webkit-scrollbar-track { background: transparent; }
+.moom-nav-scroll::-webkit-scrollbar-thumb { background: rgba(108, 99, 255, 0.28); border-radius: 4px; }
+.moom-nav-scroll:hover::-webkit-scrollbar-thumb { background: rgba(108, 99, 255, 0.6); }
+
+.moom-sidebar-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.25), transparent);
+}
+
+/* ── Group labels ── */
+.moom-group-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 10px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #64748b;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s;
+}
+.moom-group-label:hover { color: #cbd5e1; }
+.moom-group-rail + .moom-group-rail {
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ── Navigation Items ── */
+.moom-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 7px 10px 7px 8px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  position: relative;
+  color: #94a3b8;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+
+.moom-nav-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #94a3b8;
+  transition: all 0.2s;
+}
+
+.moom-nav-item:hover {
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  transform: translateX(2px);
+}
+.moom-nav-item:hover .moom-nav-icon {
+  background: rgba(108, 99, 255, 0.18);
+  color: #c4b5fd;
+}
+
+.moom-nav-item.active {
+  background: linear-gradient(90deg, rgba(108, 99, 255, 0.2), rgba(167, 139, 250, 0.04));
+  color: #fff;
+  border-color: rgba(108, 99, 255, 0.28);
+  font-weight: 600;
+  transform: none;
+}
+.moom-nav-item.active .moom-nav-icon {
+  background: linear-gradient(135deg, #6c63ff, #8b7bff);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(108, 99, 255, 0.45);
+}
+
+.moom-nav-item:focus-visible {
+  outline: 2px solid rgba(167, 139, 250, 0.7);
+  outline-offset: 1px;
+}
+
+.moom-active-bar {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 55%;
+  background: linear-gradient(180deg, #6c63ff, #a78bfa);
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 0 10px rgba(108, 99, 255, 0.8);
+}
+
+/* ── Action Buttons ── */
+.moom-btn-primary {
+  background: linear-gradient(135deg, #6c63ff, #5b4bf7);
+  color: #fff;
+  border: 1px solid rgba(108, 99, 255, 0.4);
+  box-shadow: 0 2px 10px rgba(108, 99, 255, 0.3);
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.moom-btn-primary:hover {
+  box-shadow: 0 4px 16px rgba(108, 99, 255, 0.5);
+  transform: translateY(-1px);
+}
+
+.moom-btn-emerald {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(5, 150, 105, 0.1));
+  color: #34d399;
+  border: 1px solid rgba(52, 211, 153, 0.3);
+  transition: all 0.2s;
+}
+.moom-btn-emerald:hover {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.3), rgba(5, 150, 105, 0.15));
+  border-color: rgba(52, 211, 153, 0.5);
+  box-shadow: 0 0 14px rgba(16, 185, 129, 0.3);
+}
+
+.moom-btn-rose {
+  background: linear-gradient(135deg, rgba(244, 63, 94, 0.18), rgba(225, 29, 72, 0.08));
+  color: #fb7185;
+  border: 1px solid rgba(251, 113, 133, 0.3);
+  transition: all 0.2s;
+}
+.moom-btn-rose:hover {
+  background: linear-gradient(135deg, rgba(244, 63, 94, 0.28), rgba(225, 29, 72, 0.15));
+  border-color: rgba(251, 113, 133, 0.5);
+  box-shadow: 0 0 14px rgba(244, 63, 94, 0.3);
+}
+
+.moom-btn-ghost {
+  background: rgba(255, 255, 255, 0.04);
+  color: #94a3b8;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.2s;
+}
+.moom-btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* ── Pulsing Notification Dot ── */
+@keyframes moom-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.4); }
+}
+
+.moom-pulse-dot {
+  animation: moom-pulse 2s infinite;
+}
