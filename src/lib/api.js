@@ -70,7 +70,10 @@ export const api = {
   deleteExamResult: (id) => request(`/results/${id}`, { method: 'DELETE' }),
   seedResults: () => request('/results/seed', { method: 'POST' }),
 
-  // Events Calendar (Full Dynamic & Mongo DB)
+  // Events Calendar & Page Config (Full Dynamic & Mongo DB)
+  getEventPageConfig: () => request('/events/page-config'),
+  updateEventPageConfig: (data) => request('/events/page-config', { method: 'PUT', body: JSON.stringify(data) }),
+  resetEventPageConfig: () => request('/events/page-config/reset', { method: 'POST' }),
   getEvents: () => request('/events'),
   createEvent: (data) => request('/events', { method: 'POST', body: JSON.stringify(data) }),
   updateEvent: (id, data) => request(`/events/${id}`, { method: 'PUT', body: JSON.stringify(data) }),

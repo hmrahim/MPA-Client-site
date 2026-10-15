@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { events } from '../data/content'
 import { useLanguage } from '../context/LanguageContext'
 import { translations } from '../data/translations'
@@ -7,7 +7,41 @@ const INTERVAL = 6000
 
 export default function Banner() {
   const { lang, num } = useLanguage()
-  const eventList = events[lang] || events.bn
+  const [dbEvents, setDbEvents] = useState(() => {
+    try {
+      const cached = localStorage.getItem('mpa_events_cache')
+      return cached ? JSON.parse(cached) : null
+    } catch {
+      return null
+    }
+  })
+
+  useEffect(() => {
+    const handleUpdate = () => {
+      try {
+        const cached = localStorage.getItem('mpa_events_cache')
+        if (cached) setDbEvents(JSON.parse(cached))
+      } catch {}
+    }
+    window.addEventListener('mpa_events_updated', handleUpdate)
+    window.addEventListener('storage', handleUpdate)
+    return () => {
+      window.removeEventListener('mpa_events_updated', handleUpdate)
+      window.removeEventListener('storage', handleUpdate)
+    }
+  }, [])
+
+  const eventList = useMemo(() => {
+    if (dbEvents && dbEvents.length > 0) {
+      return dbEvents.filter((e) => e.isActive !== false).map((e) => ({
+        id: e._id || e.id,
+        d: lang === 'bn' ? (e.fullDateBn || e.fullDate) : (e.fullDate || e.fullDateBn),
+        t: lang === 'bn' ? (e.titleBn || e.title) : (e.title || e.titleBn),
+      }))
+    }
+    return events[lang] || events.bn
+  }, [dbEvents, lang])
+
   const slideList = (translations[lang] && translations[lang].slides) || translations.bn.slides
   const [si, setSi] = useState(0)
   const [hold, setHold] = useState(false)

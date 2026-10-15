@@ -105,15 +105,19 @@ export default function TeacherManager() {
     if (!file) return
     setUploadingImage(true)
     try {
-      const url = await uploadToImgbb(file)
-      if (url) {
-        setFormData((prev) => ({ ...prev, photo: url }))
+      const res = await uploadToImgbb(file)
+      const finalUrl = typeof res === 'string' ? res : (res?.url || res?.data?.url || '')
+      if (finalUrl) {
+        setFormData((prev) => ({ ...prev, photo: finalUrl }))
         showToast('✓ Photo uploaded successfully!')
+      } else {
+        showToast(res?.message || '❌ Failed to upload photo')
       }
     } catch {
       showToast('❌ Failed to upload photo')
     } finally {
       setUploadingImage(false)
+      if (e.target) e.target.value = ''
     }
   }
 
